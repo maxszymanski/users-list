@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export const fetchUsers = createAsyncThunk('users/fechUsers', async () => {
     const res = await fetch('https://jsonplaceholder.org/users')
@@ -14,16 +14,22 @@ const initialState = {
     users: [],
     status: 'idle',
     error: '',
+    isDarkMode: false,
 }
 
 const usersSlice = createSlice({
     name: 'users',
     initialState,
     reducers: {
-        filterUsers(state, action) {
-            state.users = state.users.filter((user) =>
-                user.name.includes(action.payload)
-            )
+        filterUsers(state, action: PayloadAction<string>) {
+            state.users = state.users.name
+                ? state.users.filter((user) =>
+                      user.name.includes(action.payload)
+                  )
+                : state.users
+        },
+        toggleDarkMode(state) {
+            state.isDarkMode = !state.isDarkMode
         },
     },
     extraReducers: (builder) => {
@@ -43,6 +49,6 @@ const usersSlice = createSlice({
     },
 })
 
-export const { filterUsers } = usersSlice.actions
+export const { filterUsers, toggleDarkMode } = usersSlice.actions
 
 export default usersSlice.reducer
