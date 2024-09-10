@@ -24,7 +24,11 @@ function UsersList() {
         return <div>Error: {error}</div>
     }
 
-    return <div className="w-full text-center text-6xl text-white">App</div>
+    return (
+        <div className="text-lighttext dark:text-darktext w-full text-center text-6xl">
+            App
+        </div>
+    )
 }
 
 export default UsersList
