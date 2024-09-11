@@ -1,11 +1,11 @@
 import Headers from './components/Headers'
-import UsersList from './components/UsersList'
+import Main from './components/Main'
 
 function App() {
     return (
-        <div className="duration:500 font-nunito min-h-screen w-full bg-secondBg font-normal transition-all dark:bg-darkbg">
+        <div className="duration:500 text text-red min-h-screen w-full bg-bg font-nunito font-normal text-darkbg transition-all dark:bg-darkSecondBg dark:text-darktext">
             <Headers />
-            <UsersList />
+            <Main />
         </div>
     )
 }

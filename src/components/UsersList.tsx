@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { fetchUsers } from '../services/usersSlice'
+import TableCategory from './TableCategory'
+import UserRow from './UserRow'
 
 function UsersList() {
     const dispatch = useAppDispatch()
@@ -9,6 +11,8 @@ function UsersList() {
     const status = useAppSelector((state) => state.users.status)
 
     const error = useAppSelector((state) => state.users.error)
+
+    console.log(users[0])
 
     useEffect(() => {
         if (status === 'idle') {
@@ -25,8 +29,16 @@ function UsersList() {
     }
 
     return (
-        <div className="text-lighttext dark:text-darktext w-full text-center text-6xl">
-            App
+        <div className="w-full p-12 text-6xl">
+            <div className="mx-auto w-full max-w-[1400px]">
+                <div className="h-full w-full overflow-auto rounded-xl border border-lightborder bg-secondBg dark:border-darkborder dark:bg-darkbg">
+                    <TableCategory />
+
+                    {users.map((user) => (
+                        <UserRow user={user} key={user.id} />
+                    ))}
+                </div>
+            </div>
         </div>
     )
 }

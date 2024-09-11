@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { toggleDarkMode } from '../services/usersSlice'
 
@@ -5,19 +6,23 @@ function Headers() {
     const dispatch = useAppDispatch()
     const isDarkMode = useAppSelector((state) => state.users.isDarkMode)
 
+    useEffect(() => {
+        if (isDarkMode) document.body.classList.add('dark')
+    }, [isDarkMode])
+
     const darkModeHandler = () => {
         dispatch(toggleDarkMode())
         document.body.classList.toggle('dark')
     }
 
     return (
-        <header className="border-b border-lightborder bg-bg px-8 py-4 text-darkbg dark:border-darkborder dark:bg-darkbg dark:text-secondBg md:py-8">
-            <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
-                <h2 className="font-kalam text-2xl font-bold dark:text-darktext md:text-5xl">
+        <header className="border-b border-lightborder bg-primary px-8 py-4 text-secondBg dark:border-darkborder dark:bg-darkSecondBg md:py-8">
+            <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between">
+                <h1 className="font-kalam text-2xl font-bold dark:text-darktext md:text-5xl">
                     Users List
-                </h2>
+                </h1>
                 <button
-                    className="mb-1 rounded-md border-2 border-transparent p-2 transition-colors duration-300 hover:border-primary hover:text-primary"
+                    className="mb-1 rounded-md border-2 border-transparent p-2 transition-colors duration-300 lg:hover:border-secondBg"
                     onClick={darkModeHandler}
                 >
                     {isDarkMode ? (
@@ -27,7 +32,7 @@ function Headers() {
                             viewBox="0 0 24 24"
                             strokeWidth={1.5}
                             stroke="currentColor"
-                            className="size-6"
+                            className="size-6 xl:size-7"
                         >
                             <path
                                 strokeLinecap="round"
@@ -42,7 +47,7 @@ function Headers() {
                             viewBox="0 0 24 24"
                             strokeWidth={1.5}
                             stroke="currentColor"
-                            className="size-6"
+                            className="size-6 xl:size-7"
                         >
                             <path
                                 strokeLinecap="round"
