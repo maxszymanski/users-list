@@ -29,9 +29,9 @@ function UsersList() {
     }
 
     return (
-        <div className="w-full p-12 text-6xl">
+        <div className="w-full py-6 text-6xl xl:px-8">
             <div className="mx-auto w-full max-w-[1400px]">
-                <div className="h-full w-full overflow-auto rounded-xl border border-lightborder bg-secondBg dark:border-darkborder dark:bg-darkbg">
+                <div className="h-full w-fit overflow-hidden border border-l-0 border-r-0 border-lightborder bg-secondBg dark:border-darkborder dark:bg-darkbg lg:w-full lg:rounded-xl xl:border-l xl:border-r">
                     <TableCategory />
 
                     {users.map((user) => (

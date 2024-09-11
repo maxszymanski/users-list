@@ -7,12 +7,12 @@ function UserRow({ user }) {
     const website = user.website
 
     return (
-        <div className="odd:bg-table dark:odd:bg-darkTable flex w-fit justify-around gap-2 border-t border-lightborder px-4 py-5 text-sm dark:border-darkborder xl:w-full xl:py-8 xl:text-base">
-            <p className="w-40 text-left">{fullName}</p>
+        <div className="flex w-fit justify-around gap-2 border-t border-lightborder px-4 py-5 text-sm even:bg-bg dark:border-darkborder dark:odd:bg-darkTable dark:even:bg-darkbg lg:w-full xl:py-8 xl:text-base">
+            <p className="w-40">{fullName}</p>
             <p className="w-36">{userName}</p>
             <p className="w-36">{company}</p>
             <p className="w-32">{phone}</p>
-            <p className="w-64">{email}</p>
+            <p className="w-60">{email}</p>
             <p className="w-44">{website}</p>
         </div>
     )

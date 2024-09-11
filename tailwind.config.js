@@ -9,7 +9,7 @@ export default {
                 kalam: 'Kalam, cursive',
             },
             colors: {
-                bg: '#F2F6FC',
+                bg: '#f1f5f9 ',
                 secondBg: '#FEFFFE',
                 lighthover: '#F9FBFF',
                 primary: '#7860CC',

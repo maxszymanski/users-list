@@ -3,9 +3,11 @@ import UsersList from './UsersList'
 
 function Main() {
     return (
-        <main className="h-full">
+        <main className="h-full w-full overflow-scroll pb-40">
             <FiltersBox />
-            <UsersList />
+            <div>
+                <UsersList />
+            </div>
         </main>
     )
 }
