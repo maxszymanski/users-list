@@ -25,13 +25,7 @@ const usersSlice = createSlice({
         selectSearchOption(state, action: PayloadAction<string>) {
             state.selectedSearchOption = action.payload
         },
-        filterUsers(state, action: PayloadAction<string>) {
-            state.users = state.users.name
-                ? state.users.filter((user) =>
-                      user.name.includes(action.payload)
-                  )
-                : state.users
-        },
+
         toggleDarkMode(state) {
             state.isDarkMode = !state.isDarkMode
         },
@@ -52,7 +46,6 @@ const usersSlice = createSlice({
     },
 })
 
-export const { filterUsers, toggleDarkMode, selectSearchOption } =
-    usersSlice.actions
+export const { toggleDarkMode, selectSearchOption } = usersSlice.actions
 
 export default usersSlice.reducer
