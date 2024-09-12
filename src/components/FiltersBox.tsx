@@ -8,8 +8,8 @@ function FiltersBox() {
     )
 
     return (
-        <div className="px-8 py-4 md:py-8">
-            <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between">
+        <div className="px-8 py-4 md:py-8 lg:px-0">
+            <div className="flex w-full flex-col justify-between text-center">
                 <h2 className="font-kalam text-2xl dark:text-darktext md:text-4xl">
                     Find, filter and sort
                 </h2>

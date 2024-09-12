@@ -16,7 +16,7 @@ function Headers() {
     }
 
     return (
-        <header className="border-b border-lightborder bg-secondBg px-8 py-4 text-darkbg dark:border-darkborder dark:bg-darkSecondBg dark:text-darktext lg:py-5">
+        <header className="border-b border-lightborder bg-secondBg px-8 py-4 text-darkbg dark:border-darkborder dark:bg-darkbg dark:text-darktext lg:py-5">
             <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between">
                 <h1 className="font-kalam text-2xl font-bold lg:text-3xl">
                     Users List
