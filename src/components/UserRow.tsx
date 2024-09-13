@@ -1,3 +1,5 @@
+import UserInfo from './UserInfo'
+
 function UserRow({ user }) {
     const fullName = `${user.firstname} ${user.lastname}`
     const userName = user.login.username
@@ -5,12 +7,24 @@ function UserRow({ user }) {
     const email = user.email
 
     return (
-        <div className="bg-table flex max-w-[768px] justify-around gap-2 border-t border-lightborder px-4 py-5 text-sm text-stone-800 odd:bg-white dark:border-darkborder dark:text-stone-300 dark:odd:bg-darkTable dark:even:bg-darkbg xl:max-w-[800px] xl:py-8 xl:text-base">
-            <p className="sm:min-w-32 md:min-w-40">{fullName}</p>
-            <p className="sm:min-w-28 md:min-w-36">{userName}</p>
-            <p className="sm:min-w-32">{phone}</p>
-            <p className="sm:min-w-52 md:min-w-60">{email}</p>
-        </div>
+        <li className="bg-table xs:text-sm mb-4 flex flex-col gap-2 rounded-lg border-b border-t border-lightborder px-4 py-5 text-start text-xs text-stone-800 shadow-2xl shadow-violet-100 first:border-t-0 odd:bg-white dark:border-darkborder dark:text-stone-300 dark:shadow-darkborder dark:odd:bg-darkTable dark:even:bg-darkbg sm:mb-0 sm:flex-row sm:justify-around sm:rounded-none sm:border-b-0 sm:text-center xl:py-8 xl:text-base">
+            <UserInfo
+                infoTitle="Full Name"
+                userDetail={fullName}
+                type="sm:min-w-32 md:min-w-40"
+            />
+            <UserInfo
+                infoTitle="Username"
+                userDetail={userName}
+                type="sm:min-w-28 md:min-w-36"
+            />
+            <UserInfo infoTitle="Phone" userDetail={phone} type="sm:min-w-32" />
+            <UserInfo
+                infoTitle="Email"
+                userDetail={email}
+                type="sm:min-w-52 md:min-w-60"
+            />
+        </li>
     )
 }
 

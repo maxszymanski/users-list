@@ -2,7 +2,7 @@ function Spinner() {
     return (
         <div
             role="status"
-            className="flex w-full items-center justify-center py-12 xl:py-20"
+            className="flex w-full items-center justify-center border-t border-b-lightborder py-12 dark:border-darkborder xl:py-20"
         >
             <svg
                 aria-hidden="true"

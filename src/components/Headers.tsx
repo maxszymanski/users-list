@@ -16,9 +16,9 @@ function Headers() {
     }
 
     return (
-        <header className="border-b border-lightborder bg-secondBg px-8 py-4 text-darkbg dark:border-darkborder dark:bg-darkbg dark:text-darktext lg:py-5">
-            <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between">
-                <h1 className="font-kalam text-2xl font-bold lg:text-3xl">
+        <header className="border-b border-lightborder bg-secondBg px-8 py-4 text-darkbg shadow-2xl shadow-violet-100 dark:border-darkborder dark:bg-darkbg dark:text-darktext dark:shadow-darkborder lg:py-5">
+            <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between lg:px-8">
+                <h1 className="font-kalam text-2xl font-bold text-primary lg:text-3xl">
                     Users List
                 </h1>
                 <button

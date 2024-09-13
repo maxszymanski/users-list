@@ -12,16 +12,38 @@ export const fetchUsers = createAsyncThunk('users/fechUsers', async () => {
 
 const initialState = {
     users: [],
+    filteredUsers: [],
     status: 'idle',
     error: '',
-    isDarkMode: true,
+    searchTerm: '',
     selectedSearchOption: 'name',
+    isDarkMode: true,
 }
 
 const usersSlice = createSlice({
     name: 'users',
     initialState,
     reducers: {
+        filterUsers(state) {
+            state.filteredUsers = state.users.filter((user) => {
+                const fullName =
+                    `${user.firstname} ${user.lastname}`.toLowerCase()
+                const username = user.login.username.toLowerCase()
+                const email = user.email.toLowerCase()
+                const phone = user.phone.replace(/[()\-\s]/g, '')
+
+                return (
+                    fullName.includes(state.searchTerm.toLowerCase()) ||
+                    username.includes(state.searchTerm.toLowerCase()) ||
+                    email.includes(state.searchTerm.toLowerCase()) ||
+                    phone.includes(state.searchTerm)
+                )
+            })
+        },
+        setSearchTerm(state, action: PayloadAction<string>) {
+            state.searchTerm = action.payload
+        },
+
         selectSearchOption(state, action: PayloadAction<string>) {
             state.selectedSearchOption = action.payload
         },
@@ -38,6 +60,7 @@ const usersSlice = createSlice({
             .addCase(fetchUsers.fulfilled, (state, action) => {
                 state.status = 'succeeded'
                 state.users = action.payload
+                state.filteredUsers = action.payload
             })
             .addCase(fetchUsers.rejected, (state, action) => {
                 state.status = 'failed'
@@ -46,6 +69,11 @@ const usersSlice = createSlice({
     },
 })
 
-export const { toggleDarkMode, selectSearchOption } = usersSlice.actions
+export const {
+    toggleDarkMode,
+    selectSearchOption,
+    filterUsers,
+    setSearchTerm,
+} = usersSlice.actions
 
 export default usersSlice.reducer
