@@ -14,7 +14,6 @@ const initialState = {
     users: [],
     filteredUsers: [],
     status: 'idle',
-    error: '',
     searchTerm: '',
     selectedSearchOption: 'name',
     isDarkMode: true,
@@ -64,7 +63,6 @@ const usersSlice = createSlice({
             })
             .addCase(fetchUsers.rejected, (state, action) => {
                 state.status = 'failed'
-                state.error = action.error.message
             })
     },
 })

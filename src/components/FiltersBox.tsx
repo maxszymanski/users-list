@@ -13,10 +13,10 @@ function FiltersBox() {
     const searchTerm = useAppSelector((state) => state.users.searchTerm)
 
     return (
-        <div className="px-8 py-4 md:py-8 lg:px-0">
+        <div className="px-8 py-4 md:py-8 lg:fixed lg:w-[200px] lg:px-0">
             <div className="flex w-full flex-col justify-between text-center">
                 <h2 className="font-kalam text-2xl dark:text-darktext md:text-4xl">
-                    Find, filter and sort
+                    Search and Sort
                 </h2>
                 <div className="flex flex-col items-center gap-4 overflow-hidden md:flex-row">
                     <select

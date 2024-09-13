@@ -1,6 +1,6 @@
 function TableCategory() {
     return (
-        <li className="hidden w-full justify-around gap-2 bg-white px-4 py-4 text-sm font-semibold shadow-2xl shadow-violet-100 dark:bg-darkTable dark:shadow-darkborder sm:flex xl:py-6 xl:text-lg">
+        <li className="mb-4 flex w-full justify-around gap-2 border-b border-lightborder bg-white px-4 py-4 text-sm font-semibold shadow-2xl shadow-violet-100 dark:border-darkborder dark:bg-darkTable dark:shadow-darkborder sm:mb-0 sm:border-0 xl:py-6 xl:text-lg">
             <div className="hidden sm:block sm:min-w-32 md:min-w-40">
                 <p>Full name </p>
             </div>
