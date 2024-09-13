@@ -42,19 +42,19 @@ function UsersList() {
     }
 
     return (
-        <div className="flex w-full py-6 text-6xl">
+        <div className="flex w-full px-2 py-6 text-6xl">
             <div
-                className={`mx-auto ${isLoading ? 'w-full md:w-[768px]' : 'w-[768px]'} lg:mr-0 xl:w-[800px]`}
+                className={`mx-auto w-full max-w-[768px] xl:mr-0 xl:max-w-[800px]`}
             >
                 <div
-                    className={`h-full overflow-hidden border border-l-0 border-r-0 border-lightborder bg-slate-50 text-center dark:border-darkborder dark:bg-darkbg md:w-full md:rounded-xl md:border-l md:border-r xl:w-[800px] ${isLoading ? 'w-full md:w-[768px]' : 'w-[768px]'} `}
+                    className={`h-full w-full max-w-[768px] overflow-hidden rounded-xl border border-lightborder bg-slate-50 text-center dark:border-darkborder dark:bg-darkbg md:w-full xl:max-w-[800px]`}
                 >
-                    <input
+                    {/* <input
                         type="text"
                         placeholder="Szukaj użytkowników..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                    />
+                    /> */}
                     <TableCategory />
                     {isLoading && <Spinner />}
                     {filteredUsers.map((user) => (
