@@ -1,18 +1,26 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
-import { toggleDarkMode } from '../services/usersSlice'
+import { setDarkMode, initializeDarkMode } from '../services/usersSlice'
 
 function Headers() {
     const dispatch = useAppDispatch()
     const isDarkMode = useAppSelector((state) => state.users.isDarkMode)
+    const mode = useAppSelector((state) => state.users.mode)
 
     useEffect(() => {
-        if (isDarkMode) document.body.classList.add('dark')
+        dispatch(initializeDarkMode())
+    }, [dispatch])
+
+    useEffect(() => {
+        if (isDarkMode) {
+            document.body.classList.add('dark')
+        } else {
+            document.body.classList.remove('dark')
+        }
     }, [isDarkMode])
 
     const darkModeHandler = () => {
-        dispatch(toggleDarkMode())
-        document.body.classList.toggle('dark')
+        dispatch(setDarkMode(!isDarkMode))
     }
 
     return (

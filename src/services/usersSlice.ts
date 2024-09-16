@@ -16,7 +16,8 @@ const initialState = {
     status: 'idle',
     searchTerm: '',
     selectedSearchOption: 'name',
-    isDarkMode: true,
+    mode: '',
+    isDarkMode: false,
 }
 
 const usersSlice = createSlice({
@@ -47,8 +48,24 @@ const usersSlice = createSlice({
             state.selectedSearchOption = action.payload
         },
 
-        toggleDarkMode(state) {
-            state.isDarkMode = !state.isDarkMode
+        setDarkMode(state, action: PayloadAction<boolean>) {
+            state.isDarkMode = action.payload
+            state.mode = action.payload ? 'dark' : 'light'
+            localStorage.setItem('mode', state.mode)
+        },
+        initializeDarkMode(state) {
+            const storedMode = localStorage.getItem('mode')
+            if (storedMode) {
+                state.mode = storedMode
+                state.isDarkMode = storedMode === 'dark'
+            } else {
+                const prefersDark = window.matchMedia(
+                    '(prefers-color-scheme: dark)'
+                ).matches
+                state.isDarkMode = prefersDark
+                state.mode = prefersDark ? 'dark' : 'light'
+                localStorage.setItem('mode', state.mode)
+            }
         },
     },
     extraReducers: (builder) => {
@@ -68,10 +85,11 @@ const usersSlice = createSlice({
 })
 
 export const {
-    toggleDarkMode,
+    setDarkMode,
     selectSearchOption,
     filterUsers,
     setSearchTerm,
+    initializeDarkMode,
 } = usersSlice.actions
 
 export default usersSlice.reducer
