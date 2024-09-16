@@ -17,6 +17,7 @@ const initialState = {
     searchTerm: '',
     mode: '',
     isDarkMode: false,
+    sort: 'ascending',
 }
 
 const usersSlice = createSlice({
@@ -41,6 +42,18 @@ const usersSlice = createSlice({
         },
         setSearchTerm(state, action: PayloadAction<string>) {
             state.searchTerm = action.payload
+        },
+        setSortType(state, action: PayloadAction<string>) {
+            state.sort = action.payload
+        },
+
+        sortUsers(state) {
+            state.filteredUsers = state.filteredUsers.sort((a, b) => {
+                return a.firstname.localeCompare(b.firstname)
+            })
+            if (state.sort === 'descending') {
+                state.filteredUsers.reverse()
+            }
         },
 
         setDarkMode(state, action: PayloadAction<boolean>) {
@@ -72,6 +85,8 @@ const usersSlice = createSlice({
                 state.status = 'succeeded'
                 state.users = action.payload
                 state.filteredUsers = action.payload
+
+                usersSlice.caseReducers.sortUsers(state)
             })
             .addCase(fetchUsers.rejected, (state) => {
                 state.status = 'failed'
@@ -79,7 +94,13 @@ const usersSlice = createSlice({
     },
 })
 
-export const { setDarkMode, filterUsers, setSearchTerm, initializeDarkMode } =
-    usersSlice.actions
+export const {
+    setDarkMode,
+    filterUsers,
+    setSearchTerm,
+    initializeDarkMode,
+    setSortType,
+    sortUsers,
+} = usersSlice.actions
 
 export default usersSlice.reducer
