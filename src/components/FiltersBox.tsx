@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { filterUsers, setSearchTerm } from '../services/usersSlice'
+import SortUsers from './SortUsers'
 
 function FiltersBox() {
     const dispatch = useAppDispatch()
@@ -16,7 +17,7 @@ function FiltersBox() {
                         <input
                             id="search"
                             type="search"
-                            className="w-full rounded-xl border border-lightborder bg-secondBg px-5 py-2 shadow-[0px_0px_26px_2px] shadow-violet-100 outline-none dark:border-darkborder dark:bg-darkbg dark:shadow-darkborder"
+                            className="w-full rounded-xl border border-lightborder bg-secondBg px-5 py-2 shadow-[0px_0px_26px_2px] shadow-violet-100 outline-none focus:border-primary dark:border-darkborder dark:bg-darkbg dark:shadow-darkborder dark:focus:border-primary"
                             placeholder={`Search `}
                             value={searchTerm}
                             onChange={(e) => {
@@ -25,7 +26,7 @@ function FiltersBox() {
                             }}
                         />
                     </div>
-                    <button>Sort</button>
+                    <SortUsers />
                 </div>
             </div>
         </div>
