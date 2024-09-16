@@ -15,7 +15,6 @@ const initialState = {
     filteredUsers: [],
     status: 'idle',
     searchTerm: '',
-    selectedSearchOption: 'name',
     mode: '',
     isDarkMode: false,
 }
@@ -42,10 +41,6 @@ const usersSlice = createSlice({
         },
         setSearchTerm(state, action: PayloadAction<string>) {
             state.searchTerm = action.payload
-        },
-
-        selectSearchOption(state, action: PayloadAction<string>) {
-            state.selectedSearchOption = action.payload
         },
 
         setDarkMode(state, action: PayloadAction<boolean>) {
@@ -78,18 +73,13 @@ const usersSlice = createSlice({
                 state.users = action.payload
                 state.filteredUsers = action.payload
             })
-            .addCase(fetchUsers.rejected, (state, action) => {
+            .addCase(fetchUsers.rejected, (state) => {
                 state.status = 'failed'
             })
     },
 })
 
-export const {
-    setDarkMode,
-    selectSearchOption,
-    filterUsers,
-    setSearchTerm,
-    initializeDarkMode,
-} = usersSlice.actions
+export const { setDarkMode, filterUsers, setSearchTerm, initializeDarkMode } =
+    usersSlice.actions
 
 export default usersSlice.reducer

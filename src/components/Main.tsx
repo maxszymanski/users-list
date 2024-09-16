@@ -3,7 +3,7 @@ import UsersList from './UsersList'
 
 function Main() {
     return (
-        <main className="h-full w-full overflow-scroll pb-24 pt-2 xl:pt-12">
+        <main className="h-full w-full overflow-scroll pb-24 xl:pt-12">
             <div className="relative mx-auto w-full max-w-[1400px] justify-between lg:px-8 xl:flex">
                 <FiltersBox />
                 <UsersList />

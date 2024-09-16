@@ -5,7 +5,6 @@ import { setDarkMode, initializeDarkMode } from '../services/usersSlice'
 function Headers() {
     const dispatch = useAppDispatch()
     const isDarkMode = useAppSelector((state) => state.users.isDarkMode)
-    const mode = useAppSelector((state) => state.users.mode)
 
     useEffect(() => {
         dispatch(initializeDarkMode())

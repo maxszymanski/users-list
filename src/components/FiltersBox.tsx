@@ -1,35 +1,31 @@
 import { useAppDispatch, useAppSelector } from '../hooks'
-import {
-    filterUsers,
-    selectSearchOption,
-    setSearchTerm,
-} from '../services/usersSlice'
+import { filterUsers, setSearchTerm } from '../services/usersSlice'
 
 function FiltersBox() {
     const dispatch = useAppDispatch()
-    const selectedSearchOption = useAppSelector(
-        (state) => state.users.selectedSearchOption
-    )
     const searchTerm = useAppSelector((state) => state.users.searchTerm)
 
     return (
-        <div className="px-8 py-4 md:py-8 lg:fixed lg:w-[150px] lg:px-0">
-            <div className="flex w-full flex-col justify-between text-center">
-                <h2 className="font-kalam text-2xl dark:text-darktext md:text-4xl">
+        <div className="px-8 py-8 md:py-8 xl:fixed xl:px-0">
+            <div className="mx-auto flex w-full max-w-[375px] flex-col justify-between text-center">
+                <h2 className="mb-8 mt-2 font-kalam text-2xl dark:text-darktext md:text-4xl">
                     Search and Sort
                 </h2>
-                <div className="flex w-full flex-col items-center gap-4 overflow-hidden">
-                    <button>sort by</button>
-                    <input
-                        type="search"
-                        className="w-full rounded-full bg-secondBg px-4 py-2 dark:bg-darkbg"
-                        placeholder={`Search by ${selectedSearchOption}`}
-                        value={searchTerm}
-                        onChange={(e) => {
-                            dispatch(setSearchTerm(e.target.value))
-                            dispatch(filterUsers())
-                        }}
-                    />
+                <div className="flex w-full items-center gap-12">
+                    <div className="relative">
+                        <input
+                            id="search"
+                            type="search"
+                            className="w-full rounded-xl border border-lightborder bg-secondBg px-5 py-2 shadow-[0px_0px_26px_2px] shadow-violet-100 outline-none dark:border-darkborder dark:bg-darkbg dark:shadow-darkborder"
+                            placeholder={`Search `}
+                            value={searchTerm}
+                            onChange={(e) => {
+                                dispatch(setSearchTerm(e.target.value))
+                                dispatch(filterUsers())
+                            }}
+                        />
+                    </div>
+                    <button>Sort</button>
                 </div>
             </div>
         </div>
