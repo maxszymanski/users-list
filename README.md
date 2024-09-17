@@ -6,7 +6,7 @@ This application was created as a recruitment task for a company, with the prima
 It includes features like fetching, filtering, and sorting user data, with full integration of Redux Toolkit for state management.
 
 
-Live: [Users list]([https://tastyburrito.netlify.app/](https://maxszymanski-users-list.netlify.app/))
+Live: [Users list](https://maxszymanski-users-list.netlify.app/)
 
 
 
@@ -20,6 +20,7 @@ Live: [Users list]([https://tastyburrito.netlify.app/](https://maxszymanski-user
   
 - [![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-  
+
+## Contact
 
 Created by [@Max Szymański](https://maxszymanski.pl) - feel free to contact me!
