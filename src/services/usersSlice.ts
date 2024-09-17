@@ -49,7 +49,7 @@ const usersSlice = createSlice({
 
         sortUsers(state) {
             state.filteredUsers = state.filteredUsers.sort((a, b) => {
-                return a.firstname.localeCompare(b.firstname)
+                return a.login.username.localeCompare(b.login.username)
             })
             if (state.sort === 'descending') {
                 state.filteredUsers.reverse()

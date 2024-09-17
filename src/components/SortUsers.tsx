@@ -13,7 +13,7 @@ function SortUsers() {
 
     return (
         <button
-            className="text flex items-center gap-4 text-nowrap rounded-xl border border-lightborder bg-secondBg px-5 py-2 shadow-[0px_0px_26px_2px] shadow-violet-100 outline-none transition-colors duration-300 focus:border-primary dark:border-darkborder dark:bg-darkTable dark:shadow-darkborder dark:hover:border-primary dark:focus:border-primary"
+            className="flex items-center gap-4 text-nowrap rounded-xl border border-lightborder bg-secondBg from-violet-100 to-bg px-5 py-2 text-base shadow-[0px_0px_26px_2px] shadow-violet-100 outline-none transition-colors duration-300 hover:border-primary focus:shadow-violet-300 dark:border-darkborder dark:bg-darkTable dark:bg-none dark:shadow-darkborder dark:hover:border-primary dark:focus:border-primary xl:bg-gradient-to-b"
             onClick={toggleSort}
         >
             Sort

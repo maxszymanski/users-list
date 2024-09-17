@@ -5,7 +5,7 @@ function ErrorMessage() {
     const dispatch = useAppDispatch()
 
     return (
-        <div className="flex flex-col items-center gap-4 pb-8 pt-4 text-lg sm:py-12 lg:gap-8 lg:py-16 lg:text-xl">
+        <div className="flex flex-col items-center gap-4 border-lightborder dark:border-darkborder pb-8 pt-4 text-lg sm:border-t sm:py-12 lg:gap-8 lg:py-16 lg:text-xl">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

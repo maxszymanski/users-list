@@ -6,10 +6,12 @@ import UserRow from './UserRow'
 import Spinner from './Spinner'
 import ErrorMessage from './ErrorMessage'
 import NoUsersFound from './NoUsersFound'
+import UsersCount from './UsersCount'
 
 function UsersList() {
     const dispatch = useAppDispatch()
     const filteredUsers = useAppSelector((state) => state.users.filteredUsers)
+    const users = useAppSelector((state) => state.users.users)
     const status = useAppSelector((state) => state.users.status)
 
     const isLoading = status === 'loading'
@@ -38,6 +40,10 @@ function UsersList() {
                     {filteredUsers.map((user) => (
                         <UserRow user={user} key={user.id} />
                     ))}
+                    <UsersCount
+                        filteredCount={filteredUsers.length}
+                        totalCount={users.length}
+                    />
                 </ul>
             </div>
         </div>
