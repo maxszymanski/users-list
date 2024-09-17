@@ -1,6 +1,7 @@
+import { User } from '../types/types'
 import UserInfo from './UserInfo'
 
-function UserRow({ user }) {
+function UserRow({ user }: { user: User }) {
     const fullName = `${user.firstname} ${user.lastname}`
     const userName = user.login.username
     const phone = user.phone

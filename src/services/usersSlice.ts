@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { User, UsersState } from '../types/types'
 
 export const fetchUsers = createAsyncThunk('users/fechUsers', async () => {
     const res = await fetch('https://jsonplaceholder.org/users')
@@ -10,7 +11,7 @@ export const fetchUsers = createAsyncThunk('users/fechUsers', async () => {
     return users
 })
 
-const initialState = {
+const initialState: UsersState = {
     users: [],
     filteredUsers: [],
     status: 'idle',
@@ -25,7 +26,7 @@ const usersSlice = createSlice({
     initialState,
     reducers: {
         filterUsers(state) {
-            state.filteredUsers = state.users.filter((user) => {
+            state.filteredUsers = state.users.filter((user: User) => {
                 const fullName =
                     `${user.firstname} ${user.lastname}`.toLowerCase()
                 const username = user.login.username.toLowerCase()
@@ -48,9 +49,11 @@ const usersSlice = createSlice({
         },
 
         sortUsers(state) {
-            state.filteredUsers = state.filteredUsers.sort((a, b) => {
-                return a.login.username.localeCompare(b.login.username)
-            })
+            state.filteredUsers = state.filteredUsers.sort(
+                (a: User, b: User) => {
+                    return a.login.username.localeCompare(b.login.username)
+                }
+            )
             if (state.sort === 'descending') {
                 state.filteredUsers.reverse()
             }

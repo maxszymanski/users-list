@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { setDarkMode, initializeDarkMode } from '../services/usersSlice'
 
