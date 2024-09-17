@@ -16,7 +16,7 @@ function FiltersBox() {
                     <input
                         id="search"
                         type="search"
-                        className="w-full rounded-xl border border-lightborder from-violet-100 to-bg px-5 py-2 shadow-[0px_0px_26px_2px] shadow-violet-100 outline-none placeholder:text-darkbg focus:border-primary focus:shadow-violet-300 dark:border-darkborder dark:bg-darkTable dark:bg-none dark:shadow-darkborder dark:placeholder:text-lighttext dark:focus:border-primary xl:bg-gradient-to-b"
+                        className="w-full rounded-xl border border-lightborder from-violet-100 to-bg px-5 py-2 shadow-[0px_0px_26px_2px] shadow-violet-100 outline-none transition-colors duration-300 placeholder:text-darkbg focus:border-primary focus:shadow-violet-300 dark:border-darkborder dark:bg-darkTable dark:bg-none dark:shadow-darkborder dark:placeholder:text-lighttext dark:focus:border-primary xl:bg-gradient-to-b"
                         placeholder={`Search `}
                         value={searchTerm}
                         onChange={(e) => {

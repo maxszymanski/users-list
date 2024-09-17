@@ -29,7 +29,7 @@ function Headers() {
                     Users List
                 </h1>
                 <button
-                    className="mb-1 rounded-md border-2 border-transparent p-2 transition-colors duration-300 lg:hover:border-primary"
+                    className="mb-1 rounded-md border-2 border-transparent p-2 outline-none transition-colors duration-300 hover:border-primary focus:border-primary"
                     onClick={darkModeHandler}
                 >
                     {isDarkMode ? (
