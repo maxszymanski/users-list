@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
-import { fetchUsers } from '../services/usersSlice'
+import { setUsers, sortUsers } from '../services/usersSlice'
 import TableCategory from './TableCategory'
 import UserRow from './UserRow'
 import Spinner from './Spinner'
@@ -8,24 +8,23 @@ import ErrorMessage from './ErrorMessage'
 import NoUsersFound from './NoUsersFound'
 import UsersCount from './UsersCount'
 import { User } from '../types/types'
+import { useGetUsersQuery } from '../services/users'
 
 function UsersList() {
     const dispatch = useAppDispatch()
+    const { data: users = [], error, isLoading } = useGetUsersQuery()
+
+    useEffect(() => {
+        if (users.length > 0) {
+            dispatch(setUsers(users))
+            dispatch(sortUsers())
+        }
+    }, [users, dispatch])
     const filteredUsers: User[] = useAppSelector(
         (state) => state.users.filteredUsers
     )
-    const users: User[] = useAppSelector((state) => state.users.users)
-    const status = useAppSelector((state) => state.users.status)
 
-    const isLoading = status === 'loading'
-    const isError = status === 'failed'
     const noUsersFound = filteredUsers.length === 0
-
-    useEffect(() => {
-        if (status === 'idle') {
-            dispatch(fetchUsers())
-        }
-    }, [status, dispatch])
 
     return (
         <div className="flex h-full w-full px-2 py-6 text-6xl">
@@ -38,8 +37,8 @@ function UsersList() {
                     <TableCategory />
 
                     {isLoading && <Spinner />}
-                    {isError && !isLoading && noUsersFound && <ErrorMessage />}
-                    {noUsersFound && !isError && !isLoading && <NoUsersFound />}
+                    {error && !isLoading && <ErrorMessage />}
+                    {noUsersFound && !error && !isLoading && <NoUsersFound />}
                     {filteredUsers.map((user: User) => (
                         <UserRow user={user} key={user.id} />
                     ))}

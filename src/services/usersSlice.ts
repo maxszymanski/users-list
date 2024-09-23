@@ -1,20 +1,9 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { User, UsersState } from '../types/types'
-
-export const fetchUsers = createAsyncThunk('users/fechUsers', async () => {
-    const res = await fetch('https://jsonplaceholder.org/users')
-    if (!res.ok) {
-        throw new Error('Error fetching users')
-    }
-    const users = await res.json()
-
-    return users
-})
 
 const initialState: UsersState = {
     users: [],
     filteredUsers: [],
-    status: 'idle',
     searchTerm: '',
     mode: '',
     isDarkMode: false,
@@ -25,6 +14,10 @@ const usersSlice = createSlice({
     name: 'users',
     initialState,
     reducers: {
+        setUsers(state, action: PayloadAction<User[]>) {
+            state.users = action.payload
+            state.filteredUsers = action.payload
+        },
         filterUsers(state) {
             state.filteredUsers = state.users.filter((user: User) => {
                 const fullName =
@@ -79,22 +72,6 @@ const usersSlice = createSlice({
             }
         },
     },
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchUsers.pending, (state) => {
-                state.status = 'loading'
-            })
-            .addCase(fetchUsers.fulfilled, (state, action) => {
-                state.status = 'succeeded'
-                state.users = action.payload
-                state.filteredUsers = action.payload
-
-                usersSlice.caseReducers.sortUsers(state)
-            })
-            .addCase(fetchUsers.rejected, (state) => {
-                state.status = 'failed'
-            })
-    },
 })
 
 export const {
@@ -104,6 +81,7 @@ export const {
     initializeDarkMode,
     setSortType,
     sortUsers,
+    setUsers,
 } = usersSlice.actions
 
 export default usersSlice.reducer

@@ -11,7 +11,6 @@ export interface User {
 export interface UsersState {
     users: User[]
     filteredUsers: User[]
-    status: 'idle' | 'loading' | 'succeeded' | 'failed'
     searchTerm: string
     mode: string
     isDarkMode: boolean
