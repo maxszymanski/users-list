@@ -38,8 +38,8 @@ function UsersList() {
                     <TableCategory />
 
                     {isLoading && <Spinner />}
-                    {isError && <ErrorMessage />}
-                    {noUsersFound && <NoUsersFound />}
+                    {isError && !isLoading && noUsersFound && <ErrorMessage />}
+                    {noUsersFound && !isError && !isLoading && <NoUsersFound />}
                     {filteredUsers.map((user: User) => (
                         <UserRow user={user} key={user.id} />
                     ))}
